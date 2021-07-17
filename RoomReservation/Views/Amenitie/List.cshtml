@@ -1,0 +1,15 @@
+﻿@model IEnumerable<RoomReservation.Models.AmenityDto>
+@{
+    ViewBag.Title = "Amenity";
+}
+
+<h2>List of Amenities in the Rooms</h2>
+<a href="/Amenitie/New">New Amenity</a>
+
+@foreach (var amenity in Model)
+{
+    <h2><a href="/Amenitie//Details/@amenity.AmenityID">@amenity.AmenityName</a></h2>
+   
+
+}
+

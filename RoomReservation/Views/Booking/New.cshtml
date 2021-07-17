@@ -1,0 +1,34 @@
+﻿@model IEnumerable<RoomReservation.Models.RoomDto>
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create Booking</h2>
+<form action="/Booking/Create" method="POST">
+    <div>
+        <label>Booking Name:</label>
+        <input type="text" name="BookingName" />
+    </div>
+    <div>
+        <label>CheckIn Date:</label>
+        <input type="date" name="DateIn" />
+    </div>
+    <div>
+        <label>CheckOut Date:</label>
+        <input type="date" name="DateOut" />
+    </div>
+    <div>
+        <label>Rooms:</label>
+        <select name="RoomID">
+            @foreach (var rooms in Model)
+            {
+                <option value="@rooms.RoomID">@rooms.RoomNumber</option>
+            }
+        </select>
+        
+    </div>
+    <div>
+        <input type="submit" value="Add Booking" />
+    </div>
+</form>
+

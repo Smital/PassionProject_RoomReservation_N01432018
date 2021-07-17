@@ -1,0 +1,41 @@
+﻿@model RoomReservation.Models.ViewModels.DetailsRoom
+@{
+    ViewBag.Title = "View";
+}
+
+<div class="link">
+    <a href="/Room/List">Go back to Rooms</a>
+</div>
+
+<div class="link">
+    <a href="/Room/Edit/@Model.SelectedRoom.RoomID">Update Rooms</a>
+</div>
+    
+<div class="link">
+    <a style="color:red;" href="/Room/DeleteConfirm/@Model.SelectedRoom.RoomID">Delete</a>
+</div>
+
+<div>
+    <h2>@Model.SelectedRoom.RoomNumber</h2>
+    <div>@Model.SelectedRoom.RoomStatus</div>
+    <div>@Model.SelectedRoom.RoomType</div>
+    <div>@Model.SelectedRoom.RoomCapacity</div>
+</div>
+
+
+    <div style="margin-top:100px;">
+        <h3> Bookings related to this Room</h3>
+        @foreach (var Booking in Model.ReletedBooking)
+        {
+            <div><a href="/Booking/Details/@Booking.BookingID">@Booking.BookingName</a></div>
+        }
+    </div>
+
+
+    <div style="margin-top:100px;">
+        <h3> Amenities related to this Room</h3>
+        @foreach (var amenities in Model.AssoAmenities)
+        {
+            <div><a href="/Amenities/Details/@amenities.AmenityID">@amenities.AmenityName</a></div>
+        }
+    </div>

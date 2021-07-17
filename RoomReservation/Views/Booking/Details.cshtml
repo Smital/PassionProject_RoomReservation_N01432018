@@ -1,0 +1,23 @@
+﻿@model RoomReservation.Models.BookingDto
+@{
+    ViewBag.Title = "View";
+}
+
+<div class="link">
+    <a href="/Booking/List">Go back to List</a><br />
+</div>
+
+<div class="link">
+    <a href="/Booking/Edit/@Model.BookingID">Update Booking</a>
+</div>
+
+<div class="link">
+    <a style="color:red;" href="/Booking/DeleteConfirm/@Model.BookingID">Delete</a>
+</div>
+
+<div>
+    <h2>@Model.BookingName</h2>
+    <div>CheckIn Date : @Model.DateIn</div>
+    <div>CheckOut Date: @Model.DateOut</div>
+    <div>Room Number : @Model.RoomNumber</div>
+</div>

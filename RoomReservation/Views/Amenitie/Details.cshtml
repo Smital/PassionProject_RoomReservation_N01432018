@@ -1,0 +1,44 @@
+﻿@model RoomReservation.Models.ViewModels.DetailsAmenities
+@{
+    ViewBag.Title = "View";
+}
+
+<div class="link">
+    <a href="/Amenitie/List">Go back to Amenities</a>
+</div>
+
+<div class="link">
+    <a href="/Amenitie/Edit/@Model.SelectedAmenity.AmenityID">Update Amenity</a>
+</div>
+
+<div class="link">
+    <a style="color:red" href="/Amenity/DeleteConfirm/@Model.SelectedAmenity.AmenityID">Delete</a>
+</div>
+
+    <h2>@Model.SelectedAmenity.AmenityName</h2>
+
+
+    <div>
+        <h1>Room numbers associated with this amenity:</h1>
+        @foreach (var room in Model.AssoRooms)
+        {
+            <div>
+                <a href="/Room/Details/@room.RoomID">@room.RoomNumber</a>
+                <a href="/Amenitie/UnAssociate/@Model.SelectedAmenity.AmenityID/@room.RoomID" style="color:crimson;">[x]</a>
+            </div>
+
+        }
+
+        <div>
+            <h3>Add room numbers to this amenity : @Model.SelectedAmenity.AmenityName </h3>
+            <form method="post" action="/Amenitie/Associate/@Model.SelectedAmenity.AmenityID">
+                <select name="RoomID">
+                    @foreach (var room in Model.AvailableRooms)
+                    {
+                        <option value="@room.RoomID">@room.RoomNumber</option>
+                    }
+                </select>
+                <input type="submit" value="Add Room" />
+            </form>
+        </div>
+    </div>

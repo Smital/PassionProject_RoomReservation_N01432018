@@ -1,0 +1,38 @@
+﻿@model RoomReservation.Models.ViewModels.UpdateBooking
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Update Booking</h2>
+<form action="/Booking/List/@Model.SelectedBooking.BookingID" method="POST">
+    <div style="display:none;">
+        <label>Booking Id:</label>
+        <input type="text" name="BookingID" value="@Model.SelectedBooking.BookingID" />
+    </div>
+    <div>
+        <label>Booking Name:</label>
+        <input type="text" name="BookingName" value="@Model.SelectedBooking.BookingName" />
+    </div>
+    <div>
+        <label>CheckIn Date:</label>
+        <input type="date" name="DateIn" value="@Model.SelectedBooking.DateIn"/>
+    </div>
+    <div>
+        <label>CheckOut Date:</label>
+        <input type="date" name="DateOut" value="@Model.SelectedBooking.DateOut"/>
+    </div>
+    <div>
+        <label>Room Numbers:</label>
+        <select name="RoomID">
+            @foreach (var rooms in Model.RoomOptions)
+            {
+                <option value="@rooms.RoomID">@rooms.RoomNumber</option>
+            }
+        </select>
+
+    </div>
+    <div>
+        <input type="submit" value="UpdateBooking" />
+    </div>
+</form>
+

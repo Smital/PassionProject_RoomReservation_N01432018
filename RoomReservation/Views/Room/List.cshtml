@@ -1,0 +1,15 @@
+﻿@model IEnumerable<RoomReservation.Models.RoomDto>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List of Rooms in the Hotels</h2>
+<a href="/Room/New">New Room</a>
+@foreach(var room in Model)
+{
+   <h2><a href="/Room/Details/@room.RoomID">@room.RoomNumber</a></h2>
+    <div>@room.RoomType</div>
+    <div>@room.RoomStatus</div>
+
+}
+    
